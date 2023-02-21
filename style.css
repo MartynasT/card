@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gradiant-postition: -140%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #8d899b;
+  font-size: 14px;
+}
+
+main {
+  height: 100vh;
+  background-color: rgb(10, 10, 10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-wrapper {
+  width: 40vh;
+  position: relative;
+  max-width: 420px;
+  border-radius: 2rem;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.card-wrapper::before {
+  content: "";
+  padding-top: 100%;
+  width: 100%;
+  display: block;
+}
+
+.card-wrapper > .card-inner {
+  position: absolute;
+  inset: 2px;
+  background-color: #0c0b10;
+  border-radius: 2rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.card-inner::before,
+.card-wrapper::after {
+  border-radius: 50%;
+  position: absolute;
+  content: "";
+  width: 200%;
+  height: 200%;
+  top: var(--gradiant-postition);
+  left: var(--gradiant-postition);
+  background: radial-gradient(
+    circle,
+    rgba(12, 11, 16, 0) 35%,
+    rgba(78, 2, 88, 1) 50%,
+    rgba(12, 11, 16, 0) 65%
+  );
+
+  opacity: 0;
+  scale: 0.8;
+  z-index: 0;
+  transition: all 320ms ease-in-out;
+}
+
+.card-wrapper::after {
+  background: radial-gradient(
+    circle,
+    rgba(12, 11, 16, 0) 35%,
+    rgb(182, 42, 201) 50%,
+    rgba(12, 11, 16, 0) 65%
+  );
+  opacity: 0;
+
+  transition: all 320ms ease-in-out;
+}
+
+.card-wrapper:hover::after,
+.card-wrapper:hover .card-inner::before {
+  opacity: 0.7;
+  scale: 1.2;
+  --gradiant-postition: -90%;
+}
+.card-wrapper:hover::after {
+  opacity: 1;
+}
+
+.side-text {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  writing-mode: vertical-rl;
+}
+
+.card-icon {
+  width: 35%;
+  z-index: 2;
+}
+
+.card-number {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+}
